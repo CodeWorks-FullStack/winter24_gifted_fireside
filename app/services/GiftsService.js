@@ -10,6 +10,20 @@ class GiftsService {
     AppState.gifts = newGifts
   }
 
+  async updateGift(giftId) {
+    const updateData = { opened: true }
+
+    const response = await api.put(`api/gifts/${giftId}`, updateData)
+    console.log('updated gift', response.data);
+
+    const giftIndex = AppState.gifts.findIndex(gift => gift.id == giftId)
+
+    if (giftIndex == -1) { return }
+
+    const updatedGift = new Gift(response.data)
+
+    AppState.gifts.splice(giftIndex, 1, updatedGift)
+  }
 
 }
 

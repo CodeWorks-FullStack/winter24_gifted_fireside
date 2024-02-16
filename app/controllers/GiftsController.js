@@ -26,4 +26,13 @@ export class GiftsController {
       console.error(error);
     }
   }
+
+  async updateGift(giftId) {
+    try {
+      await giftsService.updateGift(giftId)
+    } catch (error) {
+      Pop.error(error)
+      console.error(error);
+    }
+  }
 }

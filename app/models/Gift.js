@@ -10,12 +10,14 @@ export class Gift {
 
   get CardHTMLTemplate() {
     return `
-    <div class="col-md-4">
+    <div class="col-md-4 mb-3">
       <div class="card">
       <img src="${this.imgUrl}" class="card-img-top" alt="${this.tag}">
       <div class="card-body">
         <p class="card-text">${this.tag}</p>
-        <button class="btn btn-primary">Open Gift</button>
+        <button onclick="app.GiftsController.updateGift('${this.id}')" class="btn btn-primary">
+          Open Gift
+        </button>
       </div>
       </div>
     </div>
