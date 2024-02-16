@@ -6,6 +6,21 @@ export class Gift {
     this.opened = data.opened
     this.creatorId = data.creatorId
   }
+
+
+  get CardHTMLTemplate() {
+    return `
+    <div class="col-md-4">
+      <div class="card">
+      <img src="${this.imgUrl}" class="card-img-top" alt="${this.tag}">
+      <div class="card-body">
+        <p class="card-text">${this.tag}</p>
+        <button class="btn btn-primary">Open Gift</button>
+      </div>
+      </div>
+    </div>
+    `
+  }
 }
 
 // const data = {
