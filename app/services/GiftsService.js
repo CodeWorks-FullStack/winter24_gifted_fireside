@@ -3,6 +3,12 @@ import { Gift } from "../models/Gift.js";
 import { api } from "./AxiosService.js"
 
 class GiftsService {
+  async createGift(giftFormData) {
+    const response = await api.post('api/gifts', giftFormData)
+    console.log('created gift', response.data);
+    const newGift = new Gift(response.data)
+    AppState.gifts.unshift(newGift)
+  }
   async getGifts() {
     const response = await api.get('api/gifts')
     console.log('got gifts', response.data);

@@ -1,5 +1,6 @@
 import { AppState } from "../AppState.js";
 import { giftsService } from "../services/GiftsService.js";
+import { getFormData } from "../utils/FormHandler.js";
 import { Pop } from "../utils/Pop.js";
 import { setHTML } from "../utils/Writer.js";
 
@@ -33,6 +34,20 @@ export class GiftsController {
     } catch (error) {
       Pop.error(error)
       console.error(error);
+    }
+  }
+
+  async createGift() {
+    try {
+      event.preventDefault()
+      const form = event.target
+      const giftFormData = getFormData(form)
+      await giftsService.createGift(giftFormData)
+      // @ts-ignore
+      form.reset()
+    } catch (error) {
+      Pop.error(error)
+      console.error(error)
     }
   }
 }

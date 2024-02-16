@@ -15,8 +15,8 @@ export class Gift {
       <img src="${this.imgUrl}" class="card-img-top" alt="${this.tag}">
       <div class="card-body">
         <p class="card-text">${this.tag}</p>
-        <button onclick="app.GiftsController.updateGift('${this.id}')" ${this.opened ? 'disabled' : ''} class="btn btn-primary">
-          Open Gift
+        <button onclick="app.GiftsController.updateGift('${this.id}')" ${this.opened ? 'disabled' : ''} class="btn btn-primary" type="button">
+         ${this.opened ? 'Gift is already opened, dawg' : 'Open Gift'}
         </button>
       </div>
       </div>
