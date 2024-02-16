@@ -28,6 +28,7 @@ export class GiftsController {
     }
   }
 
+  // REVIEW PUT/UPDATE
   async updateGift(giftId) {
     try {
       await giftsService.updateGift(giftId)
@@ -37,6 +38,7 @@ export class GiftsController {
     }
   }
 
+  // REVIEW POST/CREATE
   async createGift() {
     try {
       event.preventDefault()
@@ -45,6 +47,21 @@ export class GiftsController {
       await giftsService.createGift(giftFormData)
       // @ts-ignore
       form.reset()
+    } catch (error) {
+      Pop.error(error)
+      console.error(error)
+    }
+  }
+
+  async destroyGift(giftId) {
+    try {
+      const wantsToDestroy = await Pop.confirm('Are you sure you want to delete this?')
+
+      if (!wantsToDestroy) {
+        return
+      }
+
+      await giftsService.destroyGift(giftId)
     } catch (error) {
       Pop.error(error)
       console.error(error)
