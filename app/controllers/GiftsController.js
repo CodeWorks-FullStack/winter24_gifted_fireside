@@ -53,6 +53,7 @@ export class GiftsController {
     }
   }
 
+  // REVIEW DELETE/DESTROY
   async destroyGift(giftId) {
     try {
       const wantsToDestroy = await Pop.confirm('Are you sure you want to delete this?')
